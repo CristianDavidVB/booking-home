@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: <%= ENV["POSTGRES_HOST"] %>
+  username: <%= ENV["POSTGRES_USER"] %>
+  password: <%= ENV["POSTGRES_PASSWORD"] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: booking_home_development
+
+test:
+  <<: *default
+  database: booking_home_test
+
+production:
+  <<: *default
+  database: booking_home_production
+  username: booking_home
+  password: <%= ENV["BOOKING_HOME_DATABASE_PASSWORD"] %>
