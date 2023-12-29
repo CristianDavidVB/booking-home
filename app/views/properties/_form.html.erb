@@ -1,0 +1,55 @@
+<%= form_with model: @property do |form| %>
+  <% @property.errors.full_messages.each do |error| %>
+    <div>
+      <%= error %>
+    </div>
+    <% end %>
+  <div>
+    <%= form.label :property_types %>
+    <%= form.select :property_types, property_types_options, prompt: 'Selecciona tipo de propiedad' %>
+  </div>
+
+  <div>
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div>
+    <%= form.label :currencies %>
+    <%= form.select :currencies, currencies_options, prompt: 'Selecciona la moneda' %>
+  </div>
+
+  <div>
+    <%= form.label :community %>
+    <%= form.collection_select :community_id, Community.all, :id, :name %>
+  </div>
+
+  <div>
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div>
+    <%= form.label :area %>
+    <%= form.number_field :area %>
+  </div>
+
+  <div>
+    <%= form.label :nro_rooms %>
+    <%= form.number_field :nro_rooms %>
+  </div>
+
+  <div>
+    <%= form.label :nro_bathrooms %>
+    <%= form.number_field :nro_bathrooms %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <%= form.submit %>
+
+  <%= link_to 'volver', properties_path %>
+<% end %>

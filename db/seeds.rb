@@ -13,3 +13,17 @@ if File.exist?(csv_file_path)
 else
   puts 'Communities not imported!'
 end
+
+puts 'creating properties...'
+Property.create!(
+  property_types: 0,
+  price: 100,
+  currencies: 0,
+  address: 'Av. Siempre Viva 123',
+  area: 100,
+  nro_rooms: 3,
+  nro_bathrooms: 2,
+  description: 'Departamento en arriendo',
+  community_id: 1
+)
+puts 'properties created!'
