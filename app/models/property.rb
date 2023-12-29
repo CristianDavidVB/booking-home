@@ -11,12 +11,16 @@ class Property < ApplicationRecord
 
   validate :description_does_not_contain_contact_info
 
+  def community_name
+    community.name if community
+  end
+
   private
 
   def description_does_not_contain_contact_info
     email_regex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/
     url_regex = /\b(?:https?|ftp):\/\/\S+\b/
-    phone_number_regex = /\b(?:\+?56)?\s?9?\d{8}\b/
+    phone_number_regex = /\b\d{9}\b|\b\d{3}[-.\s]?\d{3}[-.\s]?\d{3}\b/
 
     if description.match?(email_regex) || description.match?(url_regex) || description.match?(phone_number_regex)
       errors.add(:description, "no puede contener información de contacto")
