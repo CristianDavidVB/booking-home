@@ -1,0 +1,33 @@
+<div>
+  <%= link_to 'Agregar', new_property_path %>
+</div>
+
+<table>
+  <thead>
+    <th>Imagen</th>
+    <th>Precio</th>
+    <th>Area</th>
+    <th>Nro.Habitaciones</th>
+    <th>Nro.Baños</th>
+    <th>Acciones</th>
+  </thead>
+  <tbody>
+    <% @properties.each do |property| %>
+      <tr>
+        <td></td>
+        <td> <%= property.price %> </td>
+        <td> <%= property.area %> </td>
+        <td> <%= property.nro_rooms %> </td>
+        <td> <%= property.nro_bathrooms %> </td>
+        <td>
+          <%= link_to 'Ver', property_path(property) %>
+          <%= link_to 'Editar', edit_property_path(property) %>
+          <%= link_to "Eliminar", property_path(property), data: {
+            turbo_method: :delete,
+            turbo_confirm: "Estas seguro que quieres eliminar la propiedad?" }
+          %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
