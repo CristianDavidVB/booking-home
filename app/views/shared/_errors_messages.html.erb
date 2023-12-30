@@ -1,5 +1,7 @@
-<% model.errors.full_messages.each do |error| %>
-  <div class="alert alert-danger" role="alert">
-    <%= error %>
-  </div>
+<% if resource.errors.any? %>
+  <% model.errors.full_messages.each do |error| %>
+    <div class="alert alert-danger" role="alert">
+      <%= error %>
+    </div>
+  <% end %>
 <% end %>
