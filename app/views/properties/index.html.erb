@@ -1,33 +1,35 @@
-<div>
-  <%= link_to 'Agregar', new_property_path %>
-</div>
+<div class="container mt-5">
+  <div class="row">
+    <!-- Filtros -->
+    <div class="col-md-3">
+      <div class="card h-100 d-flex flex-column">
+        <div class="card-body">
+          <h5 class="card-title">Filtros</h5>
+          <%= form_tag(properties_path, method: :get, class: "form-filter") do %>
+            <div class="mb-3">
+              <label for="price-filter" class="form-label">Precio Mínimo:</label>
+              <%= number_field_tag :min_price, params[:min_price], class: "form-control" %>
+            </div>
+            <div class="mb-3">
+              <label for="price-filter" class="form-label">Precio Máximo:</label>
+              <%= number_field_tag :max_price, params[:max_price], class: "form-control" %>
+            </div>
+            <div class="mb-3">
+              <label for="community-filter" class="form-label">Filtrar por Comunidad:</label>
+              <%= select_tag :community_id, options_from_collection_for_select(Community.all, :id, :name, params[:community_id]), include_blank: true, class: "form-control" %>
+            </div>
+            <div class="mb-3">
+              <label for="rooms-filter" class="form-label">Buscar por Nro. de Habitaciones:</label>
+              <%= text_field_tag :nro_rooms, params[:nro_rooms], class: "form-control" %>
+            </div>
+            <%= submit_tag "Filtrar", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
 
-<table>
-  <thead>
-    <th>Imagen</th>
-    <th>Precio</th>
-    <th>Area</th>
-    <th>Nro.Habitaciones</th>
-    <th>Nro.Baños</th>
-    <th>Acciones</th>
-  </thead>
-  <tbody>
-    <% @properties.each do |property| %>
-      <tr>
-        <td></td>
-        <td> <%= property.price %> </td>
-        <td> <%= property.area %> </td>
-        <td> <%= property.nro_rooms %> </td>
-        <td> <%= property.nro_bathrooms %> </td>
-        <td>
-          <%= link_to 'Ver', property_path(property) %>
-          <%= link_to 'Editar', edit_property_path(property) %>
-          <%= link_to "Eliminar", property_path(property), data: {
-            turbo_method: :delete,
-            turbo_confirm: "Estas seguro que quieres eliminar la propiedad?" }
-          %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <%= render "property", properties: @properties %>
+    <%= render "shared/paginator", pagy: @pagy %>
+
+  </div>
+</div>
