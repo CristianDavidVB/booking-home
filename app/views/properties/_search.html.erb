@@ -20,6 +20,7 @@
           <%= text_field_tag :nro_rooms, params[:nro_rooms], class: "form-control" %>
         </div>
         <%= submit_tag "Filtrar", class: "btn btn-primary" %>
+        <%= link_to "Limpiar", properties_path, class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>

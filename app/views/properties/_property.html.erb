@@ -9,7 +9,7 @@
             <% end %>
             <div class="card-body flex-fill">
               <h5 class="card-title">Comunidad: <%= property.community_name %> </h5>
-              <p class="card-text">Precio: $ <%= property.price %> <%= property.currencies.humanize %> </p>
+              <p class="card-text">Precio: <%= number_to_currency(property.price) %> <%= property.currencies.upcase %> </p>
               <p class="card-text">Área: <%= property.area %> </p>
               <p class="card-text">Nro. Habitaciones: <%= property.nro_rooms %> </p>
               <p class="card-text">Nro. Baños: <%= property.nro_bathrooms %> </p>

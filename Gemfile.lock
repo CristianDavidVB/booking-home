@@ -120,6 +120,11 @@ GEM
       activesupport (>= 5.0.0)
     faker (3.2.2)
       i18n (>= 1.8.11, < 2)
+    faraday (2.8.1)
+      base64
+      faraday-net_http (>= 2.0, < 3.1)
+      ruby2_keywords (>= 0.0.4)
+    faraday-net_http (3.0.2)
     ffi (1.16.3)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -315,6 +320,7 @@ DEPENDENCIES
   dotenv-rails (~> 2.8, >= 2.8.1)
   factory_bot (~> 6.4, >= 6.4.4)
   faker
+  faraday (~> 2.8, >= 2.8.1)
   importmap-rails
   jbuilder
   pagy
