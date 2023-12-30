@@ -1,7 +1,7 @@
 class FindProperties
   attr_reader :properties
 
-  def initialize(properties = initial_scope)
+  def initialize(properties)
     @properties = properties
   end
 
@@ -15,9 +15,6 @@ class FindProperties
 
   private
 
-  def initial_scope
-    Property.includes(:community)
-  end
 
   def filter_by_min_price(scoped, min_price)
     return scoped unless min_price.present?
