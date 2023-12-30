@@ -2,7 +2,7 @@ class PropertiesController < ApplicationController
   before_action :set_property, only: %i[ show edit update destroy ]
 
   def index
-    @properties = Property.all
+   @pagy, @properties = pagy(FindProperties.new.call(params), items: 20)
   end
 
   def show
