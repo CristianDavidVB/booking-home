@@ -1,24 +1,28 @@
-<!-- Propiedades -->
 <div class="col-md-9">
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    <% properties.each do |property| %>
-      <div class="col">
-        <div class="card h-100 d-flex flex-column">
-          <%= link_to property_path(property) do %>
-            <img src="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2022/10/god-war-ragnarok-2846657.jpg?tf=3840x" class="card-img-top" alt="...">
-          <% end %>
-          <div class="card-body flex-fill">
-            <h5 class="card-title">Comunidad: <%= property.community_name %> </h5>
-            <p class="card-text">Precio: $ <%= property.price %> <%= property.currencies.humanize %> </p>
-            <p class="card-text">Área: <%= property.area %> </p>
-            <p class="card-text">Nro. Habitaciones: <%= property.nro_rooms %> </p>
-            <p class="card-text">Nro. Baños: <%= property.nro_bathrooms %> </p>
-          </div>
-          <div class="card-footer">
-            <small class="text-body-secondary">Publicado por un usuario</small>
+  <% if properties.present? %>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <% properties.each do |property| %>
+        <div class="col">
+          <div class="card h-100 d-flex flex-column">
+            <%= link_to property_path(property) do %>
+              <%= image_tag property.photo, class: "card-img-top img-fluid" if property.photo.attached? %>
+            <% end %>
+            <div class="card-body flex-fill">
+              <h5 class="card-title">Comunidad: <%= property.community_name %> </h5>
+              <p class="card-text">Precio: $ <%= property.price %> <%= property.currencies.humanize %> </p>
+              <p class="card-text">Área: <%= property.area %> </p>
+              <p class="card-text">Nro. Habitaciones: <%= property.nro_rooms %> </p>
+              <p class="card-text">Nro. Baños: <%= property.nro_bathrooms %> </p>
+            </div>
+            <div class="card-footer">
+              <small class="text-body-secondary">Publicado por: <%= property.user_email %></small>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+
+    </div>
+  <% else %>
+    <h4 class="text-center">No se encontraron propiedades</h4>
+  <% end %>
 </div>
