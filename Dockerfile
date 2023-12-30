@@ -6,6 +6,7 @@ RUN apt-get update -qq && \
       postgresql-client \
       git \
       curl \
+      nodejs \
       libpq-dev \
       pkg-config \
       libpq5 && \

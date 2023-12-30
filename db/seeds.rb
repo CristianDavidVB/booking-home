@@ -14,6 +14,13 @@ else
   puts 'Communities not imported!'
 end
 
+puts 'creating users...'
+user = User.create!(
+  email: 'prueba@prueba.com',
+  password: '123456'
+)
+puts 'users created!'
+
 puts 'creating properties...'
 Property.create!(
   property_types: 0,
@@ -24,6 +31,7 @@ Property.create!(
   nro_rooms: 3,
   nro_bathrooms: 2,
   description: 'Departamento en arriendo',
-  community_id: 1
+  community_id: 1,
+  user_id: user.id
 )
 puts 'properties created!'
