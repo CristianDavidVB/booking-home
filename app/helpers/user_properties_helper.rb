@@ -1,4 +1,4 @@
-module PropertiesHelper
+module UserPropertiesHelper
   def property_types_options
     Property.property_types.keys.map do |property_type|
       [property_type.humanize, property_type]
