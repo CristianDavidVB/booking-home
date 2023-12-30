@@ -3,7 +3,7 @@ class UserPropertiesController < ApplicationController
   before_action :set_user_property, only: %i[ show edit update destroy ]
 
   def index
-    @pagy, @user_properties = pagy(FindProperties.new(get_user_properties).call(params), items: 20)
+    @pagy, @user_properties = pagy(find_properties_service, items: 3)
   end
 
   def show
@@ -50,10 +50,6 @@ class UserPropertiesController < ApplicationController
     @user_property = current_user.properties.find(params[:id])
   end
 
-  def fetch_currency_api_service
-    FetchCurrencyApiService.new.call
-  end
-
   def property_params
     params.require(:property).permit(
       :property_types,
@@ -67,5 +63,13 @@ class UserPropertiesController < ApplicationController
       :photo,
       :description,
     )
+  end
+
+  def find_properties_service
+    FindPropertiesService.new(get_user_properties).call(params).with_attached_photo
+  end
+
+  def fetch_currency_api_service
+    FetchCurrencyApiService.new.call
   end
 end
