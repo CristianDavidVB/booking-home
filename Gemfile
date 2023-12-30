@@ -49,6 +49,7 @@ gem 'dotenv-rails', '~> 2.8', '>=2.8.1'
 gem 'pagy'
 gem 'rails_best_practices', '~> 1.23', '>= 1.23.2'
 gem 'brakeman', '~> 6.1', '>= 6.1.1'
+gem 'devise', '~> 4.9', '>= 4.9.3'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
