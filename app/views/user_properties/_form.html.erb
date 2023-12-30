@@ -1,0 +1,64 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <%= form_with model: [current_user, user_property], class: 'form', url: user_property.persisted? ? user_property_path(user_property) : user_properties_path, local: true do |form| %>
+
+        <%= render 'shared/errors_messages', model: user_property %>
+
+        <div class="mb-2">
+          <%= form.label :property_types, class: 'form-label' %>
+          <%= form.select :property_types, property_types_options, { prompt: 'Tipo de propiedad' }, class: 'form-select' %>
+        </div>
+
+        <div class="mb-2">
+          <%= form.label :price, class: 'form-label' %>
+          <%= form.number_field :price, class: 'form-control' %>
+        </div>
+
+        <div class="mb-2">
+          <%= form.label :currencies, class: 'form-label' %>
+          <%= form.select :currencies, currencies_options, { prompt: 'Moneda' }, class: 'form-select' %>
+        </div>
+
+        <div class="mb-2">
+          <%= form.label :community, class: 'form-label' %>
+          <%= form.collection_select :community_id, Community.all, :id, :name, { prompt: 'Comunidad' }, class: 'form-select' %>
+        </div>
+
+        <div class="mb-2">
+          <%= form.label :address, class: 'form-label' %>
+          <%= form.text_field :address, class: 'form-control' %>
+        </div>
+
+        <div class="mb-2">
+          <%= form.label :area, class: 'form-label' %>
+          <%= form.number_field :area, class: 'form-control' %>
+        </div>
+
+        <div class="mb-2">
+          <%= form.label :nro_rooms, class: 'form-label' %>
+          <%= form.number_field :nro_rooms, class: 'form-control' %>
+        </div>
+
+        <div class="mb-2">
+          <%= form.label :nro_bathrooms, class: 'form-label' %>
+          <%= form.number_field :nro_bathrooms, class: 'form-control' %>
+        </div>
+
+        <div class="mb-2">
+          <%= form.label :photo, class: 'form-label' %>
+          <%= form.file_field :photo, class: 'form-control', rows: 2 %>
+        </div>
+
+        <div class="mb-2">
+          <%= form.label :description, class: 'form-label' %>
+          <%= form.text_area :description, class: 'form-control', rows: 2 %>
+        </div>
+
+        <%= form.submit "Guardar", class: 'btn btn-primary' %>
+
+        <%= link_to 'Volver', properties_path, class: 'btn btn-secondary' %>
+      <% end %>
+    </div>
+  </div>
+</div>
