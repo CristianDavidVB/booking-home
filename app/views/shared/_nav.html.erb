@@ -13,8 +13,14 @@
           <a class="nav-link" href="#">Propiedades</a>
         </li>
       </ul>
-      <button class="btn btn-light" type="submit">Iniciar sesión</button>
-      <button class="btn btn-primary mx-2" type="submit">Registrarse</button>
+
+      <% if user_signed_in? %>
+        <p class="text-light mt-3 mx-3">Bienvenido: <%= current_user.email %></p>
+        <%= link_to 'Cerrar sesión', destroy_user_session_path, data: { turbo_method: :delete }, class: 'btn btn-primary' %>
+
+      <% else %>
+        <%= link_to 'Iniciar sesión', new_user_session_path, class: 'btn btn-primary' %>
+      <% end %>
     </div>
   </div>
 </nav>
