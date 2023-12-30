@@ -7,6 +7,7 @@ class UserPropertiesController < ApplicationController
   end
 
   def show
+    @currency = fetch_currency_api_service
   end
 
   def new
@@ -47,6 +48,10 @@ class UserPropertiesController < ApplicationController
 
   def set_user_property
     @user_property = current_user.properties.find(params[:id])
+  end
+
+  def fetch_currency_api_service
+    FetchCurrencyApiService.new.call
   end
 
   def property_params
