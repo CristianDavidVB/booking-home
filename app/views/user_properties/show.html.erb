@@ -1,0 +1,55 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card h-100 d-flex">
+        <%= image_tag @user_property.photo, class: "card-img-top img-fluid" if @user_property.photo.attached? %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Detalles de la propiedad</h5>
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Tipo de propiedad:
+              <span class="badge bg-secondary"><%= @user_property.property_types.humanize %></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Precio:
+              <span class="badge bg-success">$<%= @user_property.price %></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Moneda:
+              <span class="badge bg-secondary"><%= @user_property.currencies.humanize %></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Comuna:
+              <span class="badge bg-secondary"><%= @user_property.community_name %></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Dirección:
+              <span class="badge bg-secondary"><%= @user_property.address %></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Áreas:
+              <span class="badge bg-secondary"><%= @user_property.area %> mts</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Nro Habitaciones:
+              <span class="badge bg-secondary"><%= @user_property.nro_rooms %></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Nro Baños:
+              <span class="badge bg-secondary"><%= @user_property.nro_bathrooms %></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Descripción:
+              <span class="badge bg-secondary"><%= @user_property.description %></span>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

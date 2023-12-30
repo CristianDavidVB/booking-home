@@ -1,0 +1,38 @@
+<%= link_to 'Nuevo', new_user_property_path, class: 'btn btn-primary' %>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Imagen</th>
+    <th scope="col">Precio</th>
+    <th scope="col">Área</th>
+    <th scope="col" class="col-sm-1">Nro. Habitaciones</th>
+    <th scope="col" class="col-sm-1">Nro. Baños</th>
+    <th scope="col">Acciones</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% if user_properties.present? %>
+    <% user_properties.each do |user_property| %>
+      <tr>
+        <td> <%= image_tag user_property.photo, width: 200 if user_property.photo.attached? %> </td>
+        <td> <%= user_property.price %> </td>
+        <td> <%= user_property.area %> </td>
+        <td> <%= user_property.nro_rooms %> </td>
+        <td> <%= user_property.nro_bathrooms %> </td>
+        <td>
+          <%= link_to 'Ver', user_property_path(user_property), class: 'btn btn-primary' %>
+          <%= link_to 'Editar', edit_user_property_path(user_property), class: 'btn btn-primary' %>
+          <%= link_to "Eliminar", user_property_path(user_property), class: 'btn btn-danger', data: {
+            turbo_method: :delete,
+            turbo_confirm: "Estas seguro que quieres eliminar la propiedad?" }
+          %>
+        </td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <td colspan="6" class="text-center">No hay propiedades</td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
