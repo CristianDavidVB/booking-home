@@ -43,6 +43,12 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
+gem 'bootstrap', '~> 5.3', '>= 5.3.2'
+gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
+gem 'dotenv-rails', '~> 2.8', '>=2.8.1'
+gem 'pagy'
+gem 'rails_best_practices', '~> 1.23', '>= 1.23.2'
+gem 'brakeman', '~> 6.1', '>= 6.1.1'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -50,6 +56,13 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+  gem 'rspec-rails', '~> 6.1.0'
+  gem 'factory_bot', '~> 6.4', '>= 6.4.4'
+  gem 'faker'
+end
+
+group :test do
+  gem 'shoulda-matchers', '~> 6.0'
 end
 
 group :development do
@@ -62,4 +75,3 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
-
