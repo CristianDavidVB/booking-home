@@ -3,7 +3,7 @@ module ApplicationHelper
 
   def converted_price(property)
     if property.currencies == 'clp'
-      price_in_usd = property.price / @currency
+      price_in_usd = property.price / (@currency > 0 ? @currency : 1)
       return price_in_usd.round(2)
     end
 
