@@ -25,7 +25,7 @@ class FetchCurrencyApiService
   end
 
   def previous_date
-    (Date.current - 1.day).strftime('%d-%m-%Y')
+    (Time.current - 1.day).strftime('%d-%m-%Y')
   end
 
   def parse_response(response)

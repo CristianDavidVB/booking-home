@@ -23,9 +23,6 @@ gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
-# Bundle and process CSS [https://github.com/rails/cssbundling-rails]
-gem "cssbundling-rails"
-
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
@@ -43,13 +40,22 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
+# Bootstrap: Framework de diseño front-end
 gem 'bootstrap', '~> 5.3', '>= 5.3.2'
+
+# Sassc-Rails: Integración de Sass con el pipeline de asset de Rails
 gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
-gem 'dotenv-rails', '~> 2.8', '>=2.8.1'
+
+# Dotenv-Rails: Carga de variables de entorno desde un archivo .env
+gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
+
+# Pagy: Gema de paginación para Ruby on Rails
 gem 'pagy'
-gem 'rails_best_practices', '~> 1.23', '>= 1.23.2'
-gem 'brakeman', '~> 6.1', '>= 6.1.1'
+
+# Devise: Gema de autenticación flexible para Rails
 gem 'devise', '~> 4.9', '>= 4.9.3'
+
+# Faraday: Gema para construir clientes HTTP en Ruby
 gem 'faraday', '~> 2.8', '>= 2.8.1'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
@@ -58,13 +64,8 @@ gem 'faraday', '~> 2.8', '>= 2.8.1'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
-  gem 'rspec-rails', '~> 6.1.0'
-  gem 'factory_bot', '~> 6.4', '>= 6.4.4'
-  gem 'faker'
-end
-
-group :test do
-  gem 'shoulda-matchers', '~> 6.0'
+  gem 'rails_best_practices', '~> 1.23', '>= 1.23.2'
+  gem 'brakeman', '~> 6.1', '>= 6.1.1'
 end
 
 group :development do
